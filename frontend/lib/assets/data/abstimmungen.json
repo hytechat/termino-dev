@@ -1,0 +1,26 @@
+[
+    { 
+        "id": "1", 
+        "organizerName": "Lewie Hundey", 
+        "organizerEmail": "lhundey0@upenn.edu",
+        "title": "Stracke and Sons",
+        "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique."
+    },
+    {
+        "id": "2", 
+        "organizerName": "Sunny Steddall",
+        "organizerEmail": "ssteddall1@constantcontact.com",
+        "title": "Ledner-Hoeger", 
+        "description": "Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet."
+    },
+    {
+        "id": "3", 
+        "organizerName": "Max Mustermann",
+        "organizerEmail": "ssteddall1@constantcontact.com",
+        "title": "Max Meeting", 
+        "description": "Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet."
+    }
+]
+
+
+    

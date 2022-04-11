@@ -1,0 +1,19 @@
+[
+    {
+        "id": "1",
+        "title": "title1",
+        "place": "somewhere",
+        "description": "some kind of description",
+        "organizerName": "Markus",
+        "organizerEmail": "organizerEmail@mail.com",
+        "isVoteAnonymous": "true",
+        "isMailMandatory":"false",
+        "isMaybeable": "true",
+        "isClosed": "",
+        "createdAt": "some date",
+        "closedAt": "",
+        "options": "options"
+    }
+
+
+]

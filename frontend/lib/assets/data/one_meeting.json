@@ -1,0 +1,28 @@
+{
+    "id": "666",
+    "title": "title1",
+    "place": "somewhere",
+    "description": "some kind of description",
+    "organizerName": "Markus",
+    "organizerEmail": "organizerEmail@mail.com",
+    "createdAt": null,
+    "closedAt": null,
+    "options": [
+        {
+            "id": null,
+            "meetingId": null,
+            "startDate": "2021-12-20T07:00:00.000+00:00",
+            "endDate": "2021-12-20T09:00:00.000+00:00"
+        },
+        {
+            "id": null,
+            "meetingId": null,
+            "startDate": "2021-12-15T12:00:00.000+00:00",
+            "endDate": "2021-12-15T13:00:00.000+00:00"
+        }
+    ],
+    "isVoteAnonymous": true,
+    "isMailMandatory": false,
+    "isMaybeable": true,
+    "isClosed": false
+}

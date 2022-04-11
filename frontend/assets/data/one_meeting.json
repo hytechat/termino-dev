@@ -1,0 +1,29 @@
+{
+    "id": "666",
+    "title": "Wichtiges Meeting",
+    "place": "Termino HQ",
+    "description": "Eine Beschreibung die etwas länger ist ... wäre mal cool um zu sehen, wie sich das Feld verhält ... und da random Buchstaben blöd zu lesen sind, wird jz dieser Text geschrieben",
+    "organizerName": "Tessa Termino",
+    "organizerEmail": "tessa.termino@gmail.com",
+    "createdAt": null,
+    "closedAt": null,
+    "options": [
+        {
+            "id": null,
+            "meetingId": null,
+            "startDate": "2021-12-20T07:00:00.000+00:00",
+            "endDate": "2021-12-20T09:00:00.000+00:00"
+        },
+        {
+            "id": null,
+            "meetingId": null,
+            "startDate": "2021-12-15T12:00:00.000+00:00",
+            "endDate": "2021-12-15T13:00:00.000+00:00"
+        }
+    ],
+    "isVoteAnonymous": true,
+    "wholeday": false,
+    "isMailMandatory": false,
+    "isMaybeable": true,
+    "isClosed": false
+}
