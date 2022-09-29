@@ -242,11 +242,11 @@ class _AbstimmugTeilnehmenPageState extends State<AbstimmugTeilnehmenPage> {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          textColor: Theme.of(context).primaryColor,
+          //textColor: Theme.of(context).primaryColor,
           child: const Text('Schließen'),
         ),
       ],
