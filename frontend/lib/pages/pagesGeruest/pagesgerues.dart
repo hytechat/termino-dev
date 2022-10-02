@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/config/config_expo.dart';
 import 'package:termino_frontend/config/globale_widgets/basic_vorlese_button.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/login_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termin_erstellen.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/views.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/faq_page.dart';
@@ -26,7 +27,7 @@ class _PagesGeruestState extends State<PagesGeruest> {
             switch (index) {
               //tbh weiß ned ob das auf die art und weise das betse ist tutorial wäre das vl ned schlecht https://codelabs.developers.google.com/codelabs/flutter-cupertino#2 is auch im lernpfadd
               case 0:
-                returnWidget = HomePage();
+                returnWidget = Login();
                 break;
               case 1:
                 returnWidget = TerminErstellenPage();
@@ -84,7 +85,7 @@ class _PagesGeruestState extends State<PagesGeruest> {
   CupertinoTabBar createUniversalTabBar() {
     return CupertinoTabBar(
       activeColor: Colourpalette.terminoschwarz,
-      currentIndex: 1,
+      currentIndex: 0,
       backgroundColor: Colourpalette.dunkelbeigeGrau,
       iconSize: 35,
       inactiveColor: Colourpalette.terminoGrau,
