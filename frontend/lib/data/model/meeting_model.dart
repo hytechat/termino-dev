@@ -79,6 +79,10 @@ class MeetingModel {
     return this.title;
   }
 
+  bool? getStatus(){
+    return this.isClosed;
+  }
+
   @override
   String toString() {
     return 'Meeting: {id: ${id},title: ${title},place: ${place},description: ${description},organizerName: ${organizerName},organizerEmail: ${organizerEmail},isVoteAnonymous: ${isVoteAnonymous},isMailMandatory: ${isMailMandatory},isMaybeable: ${isMaybeable},wholeday : ${wholeday},isClosed: ${isClosed},createdAt: ${createdAt},closedAT: ${closedAt},options: ${options}}';
