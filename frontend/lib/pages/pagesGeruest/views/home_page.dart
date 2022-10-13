@@ -54,7 +54,7 @@ Widget _buildMeineAbstimmungen() {
         children: [
           Column(
             children: widget.meineAbstimmungen
-                .map((item) => _buildVoteFinished(
+                .map((item) => _buildVoteOpen(
                     item)) // meine Idee bei den Map funktionen wäre nur die ersten 3 oder 5 anzuzeigen und dann muss man über view all die anderen ansehen
                 .toList(),
                 
