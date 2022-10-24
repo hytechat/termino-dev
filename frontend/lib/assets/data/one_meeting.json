@@ -1,6 +1,6 @@
 {
     "id": "666",
-    "title": "title1",
+    "title": "Weihnachten",
     "place": "somewhere",
     "description": "some kind of description",
     "organizerName": "Markus",
@@ -10,13 +10,13 @@
     "options": [
         {
             "id": null,
-            "meetingId": null,
+            "meetingId": 666,
             "startDate": "2021-12-20T07:00:00.000+00:00",
             "endDate": "2021-12-20T09:00:00.000+00:00"
         },
         {
             "id": null,
-            "meetingId": null,
+            "meetingId": 666,
             "startDate": "2021-12-15T12:00:00.000+00:00",
             "endDate": "2021-12-15T13:00:00.000+00:00"
         }
