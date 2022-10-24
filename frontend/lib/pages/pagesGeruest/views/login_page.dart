@@ -54,15 +54,21 @@ class Login extends StatelessWidget {
                   ],
                 ),
               ),
+              const Divider(
+                color: Colors.white,
+                height: 25,
+              ),
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextField(
                   controller: MailController,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(90.0),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
-                    labelText: 'Username',
+                    labelText: 'Username', 
                   ),
                 ),
               ),
@@ -72,8 +78,10 @@ class Login extends StatelessWidget {
                   controller: PasswController,
                   obscureText: true,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(90.0),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
                     labelText: 'Password',
                   ),
@@ -81,7 +89,7 @@ class Login extends StatelessWidget {
               ),
               const Divider(
                 color: Colors.white,
-                height: 50,
+                height: 25,
               ),
               Container(
                   height: 80,
