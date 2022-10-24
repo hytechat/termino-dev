@@ -26,16 +26,16 @@ class _PagesGeruestState extends State<PagesGeruest> {
             late final Widget returnWidget;
             switch (index) {
               //tbh weiß ned ob das auf die art und weise das betse ist tutorial wäre das vl ned schlecht https://codelabs.developers.google.com/codelabs/flutter-cupertino#2 is auch im lernpfadd
-              case 0:
+              /*case 0:
                 returnWidget = Login();
-                break;
-              case 1:
+                break;*/
+              case 0:
                 returnWidget = TerminErstellenPage();
                 break;
-              case 2:
+              case 1:
                 returnWidget = TermineEinsehenPage();
                 break;
-              case 3:
+              case 2:
                 //returnWidget = ProfilEinsehenPage();
                 returnWidget = const FaqPage();
                 break;
