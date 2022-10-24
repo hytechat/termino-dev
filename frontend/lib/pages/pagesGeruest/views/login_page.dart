@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/app.dart';
+import 'package:termino_frontend/config/config_expo.dart';
 
 import '../pagesgerues.dart';
 import 'home_page.dart';
@@ -21,7 +22,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.
@@ -42,6 +43,18 @@ class Login extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
+                child: Column(
+                  children: const [
+                    Text(
+                      'Login',
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextField(
                   controller: MailController,
@@ -49,7 +62,7 @@ class Login extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(90.0),
                     ),
-                    labelText: 'Email',
+                    labelText: 'Username',
                   ),
                 ),
               ),
@@ -66,29 +79,53 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
+              const Divider(
+                color: Colors.white,
+                height: 50,
+              ),
               Container(
                   height: 80,
                   padding: const EdgeInsets.all(20),
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(50),
-                      ),
-                      child: const Text('Login'),
-                      onPressed: () => Navigator.pushNamed(context
-                      , "app"),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                      //padding: const EdgeInsets.symmetric(
+                      //  horizontal: 40.0, vertical: 20.0),
+                      primary: const Color.fromRGBO(195, 16, 4, 1),
+                      minimumSize: const Size.fromHeight(2),
+                      shape: const StadiumBorder(),
+                    ),
+                    onPressed: () {},
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  )),
               TextButton(
                 onPressed: () {},
-                child: Text(
-                  'Passwort vergessen?',
-                  style: TextStyle(color: Colors.grey[600]),
+                style: TextButton.styleFrom(
+                  foregroundColor: Color.fromRGBO(46, 88, 235, 1),
                 ),
+                child: const Text(
+                  'Passwort vergessen?',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              ),
+              const Divider(
+                color: Colors.black,
+                height: 50,
+                thickness: 2,
+                indent: 60,
+                endIndent: 60,
               ),
               TextButton(
                 onPressed: () {},
-                child: Text(
-                  'Registrieren',
-                  style: TextStyle(color: Colors.grey[600]),
+                style: TextButton.styleFrom(
+                  foregroundColor: Color.fromRGBO(46, 88, 235, 1),
+                ),
+                child: const Text(
+                  'REGISTRIEREN',
+                  style: TextStyle(
+                      fontSize: 18, decoration: TextDecoration.underline),
                 ),
               ),
               Container(
@@ -96,10 +133,17 @@ class Login extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50),
+                      //padding: const EdgeInsets.symmetric(
+                      //  horizontal: 40.0, vertical: 20.0),
+                      primary: const Color.fromRGBO(217, 211, 199, 1),
+                      minimumSize: const Size.fromHeight(2),
+                      shape: const StadiumBorder(),
                     ),
-                    child: const Text('Als Gast fortfahren'),
                     onPressed: () {},
+                    child: const Text(
+                      'ALS GAST FORTFAHREN',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
                   )),
             ],
           ),
