@@ -4,9 +4,9 @@ import 'package:termino_frontend/pages/pagesGeruest/views/login_page.dart';
 
 
 void main() {
- //runApp( appBasic());
+ runApp( appBasic());
  
- runApp( Login());
+ //runApp( Login());
 }
 
 
