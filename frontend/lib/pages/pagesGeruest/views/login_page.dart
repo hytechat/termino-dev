@@ -37,11 +37,15 @@ class Login extends StatelessWidget {
           primarySwatch: Colors.red,
         ),
         home: Scaffold(
-            body: Center(
+            body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const Divider(
+                color: Colors.white,
+                height: 100,
+              ),
               Container(
                 child: Column(
                   children: const [
@@ -102,7 +106,11 @@ class Login extends StatelessWidget {
                       minimumSize: const Size.fromHeight(2),
                       shape: const StadiumBorder(),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()),);
+                        
+                      
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.white, fontSize: 18),
