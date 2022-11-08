@@ -102,7 +102,7 @@ class Login extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       //padding: const EdgeInsets.symmetric(
                       //  horizontal: 40.0, vertical: 20.0),
-                      primary: const Color.fromRGBO(195, 16, 4, 1),
+                      backgroundColor: const Color.fromRGBO(195, 16, 4, 1),
                       minimumSize: const Size.fromHeight(2),
                       shape: const StadiumBorder(),
                     ),
@@ -151,7 +151,7 @@ class Login extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       //padding: const EdgeInsets.symmetric(
                       //  horizontal: 40.0, vertical: 20.0),
-                      primary: const Color.fromRGBO(217, 211, 199, 1),
+                      backgroundColor: const Color.fromRGBO(217, 211, 199, 1),
                       minimumSize: const Size.fromHeight(2),
                       shape: const StadiumBorder(),
                     ),

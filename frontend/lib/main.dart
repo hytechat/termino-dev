@@ -5,12 +5,12 @@ import 'package:termino_frontend/pages/pagesGeruest/views/register_page.dart';
 
 
 void main() {
- //runApp( appBasic()); 
+ runApp( appBasic()); 
  
   // runApp( RegisterPage());
 
  
- runApp( Login());
+ //runApp( Login());
 }
 
 

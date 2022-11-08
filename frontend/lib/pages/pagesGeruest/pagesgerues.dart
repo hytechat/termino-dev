@@ -36,6 +36,10 @@ class _PagesGeruestState extends State<PagesGeruest> {
                 //returnWidget = ProfilEinsehenPage();
                 returnWidget = const FaqPage();
                 break;
+              case 3:
+                //returnWidget = ProfilEinsehenPage();
+                returnWidget = ProfilEinsehenPage();
+                break;
             }
 
             return CupertinoTabView(builder: (context) {
