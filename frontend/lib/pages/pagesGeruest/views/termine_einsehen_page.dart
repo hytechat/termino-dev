@@ -20,23 +20,23 @@ class _TermineEinsehenPageState extends State<TermineEinsehenPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Center(
-        child: Form(
-          key: formKey,
-          onChanged: () {
-            Form.of(primaryFocus!.context!)?.save();
-          },
-          child: Column(
-            children: [
-              _buildSectionMeineOffeneAbstimmungen(),
-              _buildSectionAbstimmungenAnDenenIchTeilnehme(),
-              _buildSectionMeineTermine(),
-              _buildSectionTermineAnDenenIchTeilNehme(),
-            ],
+        /*child: Center(*/
+          child: Form(
+            key: formKey,
+            onChanged: () {
+              Form.of(primaryFocus!.context!)?.save();
+            },
+            child: Column(
+              children: [
+                _buildSectionMeineOffeneAbstimmungen(),
+                _buildSectionAbstimmungenAnDenenIchTeilnehme(),
+                _buildSectionMeineTermine(),
+                _buildSectionTermineAnDenenIchTeilNehme(),
+              ],
+            ),
           ),
-        ),
-      ),
-    );
+        //),
+      );
   }
 
   Widget _buildSectionMeineOffeneAbstimmungen() {

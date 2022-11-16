@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/app.dart';
 import 'package:termino_frontend/config/config_expo.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/register_page.dart';
 
+import '../../../main.dart';
 import '../pagesgerues.dart';
 import 'home_page.dart';
 
@@ -23,19 +25,6 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.red,
-        ),
         home: Scaffold(
             body: SingleChildScrollView(
           child: Column(
@@ -72,7 +61,7 @@ class Login extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    labelText: 'Username', 
+                    labelText: 'Username',
                   ),
                 ),
               ),
@@ -107,9 +96,12 @@ class Login extends StatelessWidget {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()),);
-                        
-                      
+                      Navigator.pushReplacementNamed(context, '/navigation');
+                      /*(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NavigatorPage()),
+                      ); */
                     },
                     child: const Text(
                       "Login",
@@ -134,7 +126,13 @@ class Login extends StatelessWidget {
                 endIndent: 60,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                  /*(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  ); */
+                },
                 style: TextButton.styleFrom(
                   foregroundColor: Color.fromRGBO(46, 88, 235, 1),
                 ),
@@ -165,9 +163,4 @@ class Login extends StatelessWidget {
           ),
         )));
   }
-}
-
-void _navigateIntoApp(BuildContext context) {
-  Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => appBasic()));
 }

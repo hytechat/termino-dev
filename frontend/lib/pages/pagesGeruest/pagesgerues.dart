@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/config/config_expo.dart';
@@ -127,3 +128,4 @@ class _PagesGeruestState extends State<PagesGeruest> {
         });
   }
 }
+*/

@@ -134,10 +134,11 @@ class RegisterPage extends StatelessWidget {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushNamedAndRemoveUntil(context, '/navigation', (_) => false); //unmöglich für user zurück zu kehren nach Registr.
+                      /*(
                         context,
                         MaterialPageRoute(builder: (context) => HomePage()),
-                      );
+                      );*/
                     },
                     child: const Text(
                       "Registrieren",
@@ -145,7 +146,9 @@ class RegisterPage extends StatelessWidget {
                     ),
                   )),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
+                },
                 style: TextButton.styleFrom(
                   foregroundColor: Color.fromRGBO(46, 88, 235, 1),
                 ),
@@ -160,7 +163,4 @@ class RegisterPage extends StatelessWidget {
   }
 }
 
-void _navigateIntoApp(BuildContext context) {
-  Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => appBasic()));
-}
+
