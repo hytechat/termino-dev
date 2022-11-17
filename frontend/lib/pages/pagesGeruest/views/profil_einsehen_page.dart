@@ -55,10 +55,7 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
                   shape: const StadiumBorder(),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
+                    Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
                 },
                 child: const Text(
                   "Logout",
