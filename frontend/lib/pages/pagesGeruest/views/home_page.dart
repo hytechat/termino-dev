@@ -10,52 +10,54 @@ import 'package:termino_frontend/config/config_expo.dart';
 import 'package:termino_frontend/data/model/meeting_model.dart';
 import 'package:termino_frontend/data/model/meeting_model.dart';
 import 'package:termino_frontend/data/model/option_model.dart';
+import 'package:termino_frontend/data/model/vote_model.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'package:termino_frontend/pages/abstimmung_teilnehmen_popUP/viewsa/abstimmung_teilnehmen_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/register_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termine_einsehen_page.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+import 'package:flutter/services.dart';
+
 
 class HomePage extends StatefulWidget {
-late MeetingModel geholtesMeeting;
-late OptionModel optionModel;
 
-MeetingModel nikolaus = new MeetingModel(
-  id: '1',
-  title: 'Nikolaus',
-  place: 'Zuhause',
-  description: 'Keine',
-  organizerName:'Martin',
-  organizerEmail: 'niko@laus.at',
-  isVoteAnonymous: true,
-  isMailMandatory: false,
-  isMaybeable: false,
-  wholeday: false);
 
-MeetingModel weihnachten = new MeetingModel(
-  id: '2',
-  title: 'Weihnachten',
-  place: 'Zuhause',
-  description: 'Keine',
-  organizerName:'Martin',
-  organizerEmail: 'christ@kind.at',
-  isVoteAnonymous: true,
-  isMailMandatory: false,
-  isMaybeable: false,
-  wholeday: false);
+/*Future<List<MeetingModel>> findAll() async {
+    String jsonFile = await rootBundle.loadString('assets/data/one_meeting.json');
+    final jsonArray = json.decode(jsonFile) as Iterable;
 
+    List<MeetingModel> meetings =
+        List<MeetingModel>.from(jsonArray.map((e) => MeetingModel.fromJson(e)));
+
+    return Future.value(meetings);
+  }
+  */
 
 @override
  _HomePageState createState() => _HomePageState();
 }
 
-//test
-
 class _HomePageState extends State<HomePage> {
   final MeetingRepostiory meetingRepostiory = JsonMeetingRepository();
+  List <MeetingModel> _meetings = [];
   
-  //get meineAbstimmungen => null;
-  final List<String> meineAbstimmungen = ['Nikolaus', '4. Advent', 'Weihnachten','Silvester','Hl. 3 Könige']; 
+  List <MeetingModel> _closedmeetings = [];
+  List <MeetingModel> _openmeetings = [];
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    meetingRepostiory.getMeetingList().then((meeting) => {
+          setState(() => {_meetings = meeting})
+        });
+  }
+
+     
 
 @override
   Widget build(BuildContext context) {
@@ -81,9 +83,8 @@ Widget _buildMeineAbstimmungen() {
         header: const Text('Meine  Abstimmungen'),
         children: [
           Column(
-            children: meineAbstimmungen
-                .map((item) => _buildVoteOpen(
-                    item)) // meine Idee bei den Map funktionen wäre nur die ersten 3 oder 5 anzuzeigen und dann muss man über view all die anderen ansehen
+            children: _meetings
+                .map((_meetings) => _buildChoose(_meetings)) 
                 .toList(),
 
           ), 
@@ -92,39 +93,51 @@ Widget _buildMeineAbstimmungen() {
     );
   }
 
-
-  Widget _buildVoteFinished(String item) {
-    return ListTile(
+  
+  Widget _buildVoteFinished(MeetingModel meetings) {
+     return ListTile(
       trailing: basicIconButton(
           Icon(Icons.check),
           () {} // hier muss dann das entsprechende fenster geöffnet werden
           ,
-          Color.fromARGB(255, 25, 217, 41)),
+          Color.fromARGB(255, 25, 217, 31)),
       title: Text(
-         item,
+          meetings.title,
           style: TextStyle(
   	      fontWeight: FontWeight.bold),
            ),
-          subtitle: Text('24. Dezember 2022'),
+          subtitle: Text('erstellt von '+meetings.organizerName),
     );
   }
 
 
-   Widget _buildVoteOpen(String item) {
+   Widget _buildVoteOpen(MeetingModel meetings) {
      return ListTile(
       trailing: basicIconButton(
-          Icon(Icons.question_mark_rounded),
+          Icon(Icons.hourglass_empty),
           () {} // hier muss dann das entsprechende fenster geöffnet werden
           ,
-          Color.fromARGB(255, 217, 166, 25)),
+          Color.fromARGB(255, 228, 182, 56)),
       title: Text(
-          item,
+          meetings.title,
           style: TextStyle(
   	      fontWeight: FontWeight.bold),
            ),
-          subtitle: Text('24. Dezember 2022'),
+          subtitle: Text('erstellt von '+meetings.organizerName),
     );
   }
+
+  Widget _buildChoose(MeetingModel meetings) {
+      if(!meetings.getStatus()!){
+         return 
+          _buildVoteOpen(meetings);
+      } 
+      else
+       { 
+        return
+          _buildVoteFinished(meetings);
+      }
+      }
 
 
  

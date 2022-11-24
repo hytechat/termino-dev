@@ -28,7 +28,7 @@ class MeetingModel {
     required this.isMailMandatory,
     required this.isMaybeable,
     required this.wholeday,
-    this.isClosed,
+    required this.isClosed,
     this.createdAt,
     this.closedAt,
     this.options,

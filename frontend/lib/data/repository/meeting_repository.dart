@@ -16,10 +16,10 @@ class JsonMeetingRepository implements MeetingRepostiory {
   @override
   Future<List<MeetingModel>> getMeetingList() async {
     String jsonString =
-        await rootBundle.loadString('lib/assets/data/meeting.json');
-    final Iterable jsonArray = json.decode(jsonString);
+        await rootBundle.loadString('lib/assets/data/one_meeting.json');
+    final jsonArray = json.decode(jsonString) as List ;
     List<MeetingModel> meetingList = List<MeetingModel>.from(
-        jsonArray.map((jsonData) => MeetingModel.fromJson(jsonData)));
+        jsonArray.map((jsonData) => MeetingModel.fromJson(jsonData)).toList());
     return Future.value(meetingList);
   }
 

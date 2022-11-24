@@ -6,6 +6,13 @@ class VoteModel{
   final String participantName;
   final String participantEmail;
 
-  VoteModel(this.optionId, this.choice, this.participantName, this.participantEmail);
+  VoteModel({required this.optionId,required this.choice, required this.participantName, required this.participantEmail});
 
+  factory VoteModel.fromJson(Map<String, dynamic> json) {
+          return VoteModel(optionId: json['optionId'], 
+          choice: json['choice'],
+          participantName: json['participantName'],
+          participantEmail: json['participantEmail']);
+
+  }
 }
