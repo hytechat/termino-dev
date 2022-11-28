@@ -1,46 +1,59 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+/*import 'package:flutter/material.dart';
+import 'package:termino_frontend/app.dart';
+import 'package:termino_frontend/config/config_expo.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/register_page.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+import '../../../main.dart';
+import '../pagesgerues.dart';
+import 'home_page.dart';
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  final formKey = GlobalKey<FormState>();
+class Login2 extends StatefulWidget {
+  Login2({Key? key}) : super(key: key);
 
   //2 Controller um User Input zu holen
   final MailController = TextEditingController();
   final PasswController = TextEditingController();
 
+  //Key definieren für Fehlermessage
+
+  //Variablen definieren für Demo User
+  String mail = '';
+  String passwort = '';
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-    return Scaffold(
-      key: _scaffoldKey,
-      body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            body: SingleChildScrollView(
           child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: height * 0.25),
-              const Text(
-                "Login",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Divider(
+                color: Colors.white,
+                height: 100,
               ),
-              SizedBox(
-                height: height * 0.05,
+              Container(
+                child: Column(
+                  children: const [
+                    Text(
+                      'Login',
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
-              Padding(
+              const Divider(
+                color: Colors.white,
+                height: 25,
+              ),
+              Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: TextFormField(
+                child: TextField(
                   controller: MailController,
                   decoration: InputDecoration(
                     filled: true,
@@ -50,39 +63,21 @@ class _LoginState extends State<Login> {
                     ),
                     labelText: 'Username',
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                      return "Name ist nich korrekt!";
-                    } else {
-                      return null;
-                    }
-                  },
                 ),
               ),
-              SizedBox(
-                height: height * 0.01,
-              ),
-              Padding(
+              Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: TextFormField(
+                child: TextField(
                   controller: PasswController,
+                  obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    labelText: 'Passwort',
+                    labelText: 'Password',
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      return "Das Passwort ist nich korrekt!";
-                    } else {
-                      return null;
-                    }
-                  },
                 ),
               ),
               const Divider(
@@ -101,12 +96,12 @@ class _LoginState extends State<Login> {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        Navigator.pushReplacementNamed(context, '/navigation');
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Login successful!')),
-                        );
-                      }
+                      Navigator.pushReplacementNamed(context, '/navigation');
+                      /*(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NavigatorPage()),
+                      ); */
                     },
                     child: const Text(
                       "Login",
@@ -116,7 +111,7 @@ class _LoginState extends State<Login> {
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
-                  foregroundColor: const Color.fromRGBO(46, 88, 235, 1),
+                  foregroundColor: Color.fromRGBO(46, 88, 235, 1),
                 ),
                 child: const Text(
                   'Passwort vergessen?',
@@ -133,9 +128,13 @@ class _LoginState extends State<Login> {
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
+                  /*(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  ); */
                 },
                 style: TextButton.styleFrom(
-                  foregroundColor: const Color.fromRGBO(46, 88, 235, 1),
+                  foregroundColor: Color.fromRGBO(46, 88, 235, 1),
                 ),
                 child: const Text(
                   'REGISTRIEREN',
@@ -162,8 +161,13 @@ class _LoginState extends State<Login> {
                   )),
             ],
           ),
-        ),
-      ),
-    );
+        )));
+  }
+  
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
+*/

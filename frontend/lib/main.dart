@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:termino_frontend/app.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/home_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/login_page.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/login_page_old.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/profil_einsehen_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/register_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termin_erstellen.dart';
@@ -58,7 +59,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      /*appBar: AppBar(backgroundColor: Colors.white),*/
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
@@ -75,7 +75,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, 
+        type: BottomNavigationBarType.fixed,
         backgroundColor: const Color.fromRGBO(217, 211, 199, 1),
         currentIndex: currentIndex,
         selectedItemColor: Colors.black,
@@ -83,8 +83,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.house), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: "Neu"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: "Termine"),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Termine"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
         ],
         onTap: (newIndex) {
