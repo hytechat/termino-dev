@@ -1,0 +1,33 @@
+[
+    {   
+        "userID": "1",
+        "userName": "MarkoMi",
+        "firstName": "Marko",
+        "lastName": "Misic",
+        "email": "example@gmail.com",
+        "token": "",
+        "renewalToken": ""
+        
+    },
+    {   
+        "userID": "2",
+        "userName": "Krügsi",
+        "firstName": "Martin",
+        "lastName": "Krüger",
+        "email": "ministerium@zauberei.at",
+        "token": "",
+        "renewalToken": ""
+        
+    },
+    {   
+        "userID": "3",
+        "userName": "Nenadinho",
+        "firstName": "Nenad",
+        "lastName": "Milutinovic",
+        "email": "digitaler@zug.at",
+        "token": "",
+        "renewalToken": ""
+        
+    }
+]
+
