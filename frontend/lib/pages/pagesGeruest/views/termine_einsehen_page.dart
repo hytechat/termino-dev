@@ -131,7 +131,7 @@ class _TermineEinsehenPageState extends State<TermineEinsehenPage> {
           ,
           Colourpalette.bundesrot),
       leading: Text('Titel der Abstimmung/Termins'),
-      title: Text('zB Finalk date bei einem Termin'),
+      title: Text('zB Final date bei einem Termin'),
       subtitle: Text('Organisator ?'),
     );
   } // muss natürlich für jede section ei eigenes gebautrbwerden a´ber das mach ich dann erst mit Mockup
