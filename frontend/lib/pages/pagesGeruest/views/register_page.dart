@@ -99,7 +99,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (value!.isEmpty) {
                       return "Das Feld kann nicht leer sein!";
                     } else if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
+                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
                       return "Diese Mail ist ungültig!";
                     } else {
                       return null;
@@ -170,9 +171,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 title: const Text(
                     "Ich habe die Datenschutzerklärung gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
                 onChanged: (val) {
-                  setState() {
+                  setState(() {
                     _checkBoxListTile = val;
-                  }
+                  });
                 },
                 controlAffinity: ListTileControlAffinity.leading,
               ),
