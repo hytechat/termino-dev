@@ -6,7 +6,7 @@ class User {
   String image;
   String name;
   String email;
-  String phone;
+  String phone; //Wieso wird Phone verlangt?
 
   // Constructor
   User({

@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/config/config_expo.dart';
 import 'package:termino_frontend/pages/pagesGeruest/pagesgerues.dart';
+*/
 
 /*
 class appBasic extends StatefulWidget {

@@ -16,6 +16,14 @@ class _LoginState extends State<Login> {
   final MailController = TextEditingController();
   final PasswController = TextEditingController();
 
+      @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    MailController.dispose();
+    PasswController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -51,7 +59,9 @@ class _LoginState extends State<Login> {
                     labelText: 'Username',
                   ),
                   validator: (value) {
-                    if (value!.isEmpty ||
+                    if (value!.isEmpty) {
+                      return "Das Feld kann nicht leer sein!";
+                    } else if (value!.isEmpty ||
                         !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                       return "Name ist nich korrekt!";
                     } else {
@@ -76,9 +86,12 @@ class _LoginState extends State<Login> {
                     labelText: 'Passwort',
                   ),
                   validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      return "Das Passwort ist nich korrekt!";
+                    if (value!.isEmpty) {
+                      return "Das Feld kann nicht leer sein!";
+                    } else if (value!.isEmpty ||
+                        !RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
+                            .hasMatch(value!)) {
+                      return "Notwendig sind: Großbuchstabe, Zahl und Sonderzeichen!";
                     } else {
                       return null;
                     }
