@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:termino_frontend/config/config_expo.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -33,6 +34,38 @@ class _RegisterPageState extends State<RegisterPage> {
   String username = '';
 
   bool? _checkBoxListTile = false; //? macht Bool nullable
+
+  void datenschutzMessage() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Container(
+          padding: const EdgeInsets.all(16),
+          height: 90,
+          decoration: const BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Column(
+            children: const [
+              Text(
+                'Fehler!',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+              Text(
+                'Sie müssen der Datenschutzerklärung zustimmen!',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              )
+            ],
+          ),
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,12 +222,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     shape: const StadiumBorder(),
                   ),
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate() && _checkBoxListTile == true) {
                       Navigator.pushReplacementNamed(context, '/navigation');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                             content: Text('Registration successful!')),
                       );
+                    } else if (formKey.currentState!.validate() && _checkBoxListTile == false) {
+                      datenschutzMessage();
                     }
                   },
                   child: const Text(
