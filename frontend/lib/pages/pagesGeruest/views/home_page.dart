@@ -13,10 +13,11 @@ import 'package:termino_frontend/data/model/option_model.dart';
 import 'package:termino_frontend/data/model/vote_model.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'package:termino_frontend/pages/abstimmung_teilnehmen_popUP/viewsa/abstimmung_teilnehmen_page.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/abstimmung_einsehen_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/register_page_old.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termine_einsehen_page.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
-import 'dart:async' show Future;
+import 'dart:async' show Future, FutureOr;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -98,7 +99,9 @@ Widget _buildMeineAbstimmungen() {
      return ListTile(
       trailing: basicIconButton(
           Icon(Icons.check),
-          () {} // hier muss dann das entsprechende fenster geöffnet werden
+          () {
+                        navigateSecondPage(AbstimmungEinsehenPage());
+          } // hier muss dann das entsprechende fenster geöffnet werden
           ,
           Color.fromARGB(255, 25, 217, 31)),
       title: Text(
@@ -115,7 +118,9 @@ Widget _buildMeineAbstimmungen() {
      return ListTile(
       trailing: basicIconButton(
           Icon(Icons.hourglass_empty),
-          () {} // hier muss dann das entsprechende fenster geöffnet werden
+          () {
+            navigateSecondPage(AbstimmungEinsehenPage());
+          } // hier muss dann das entsprechende fenster geöffnet werden
           ,
           Color.fromARGB(255, 228, 182, 56)),
       title: Text(
@@ -139,7 +144,14 @@ Widget _buildMeineAbstimmungen() {
       }
       }
 
+FutureOr onGoBack(dynamic value) {
+    setState(() {});
+  }
 
+void navigateSecondPage(Widget editForm) {
+    Route route = MaterialPageRoute(builder: (context) => editForm);
+    Navigator.push(context, route).then(onGoBack);
+  }
  
 
 }
