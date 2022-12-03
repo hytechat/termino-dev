@@ -5,6 +5,7 @@
         "firstName": "Marko",
         "lastName": "Misic",
         "email": "example@gmail.com",
+        "passwort": "Term1n0!",
         "token": "",
         "renewalToken": ""
         
@@ -15,6 +16,7 @@
         "firstName": "Martin",
         "lastName": "Krüger",
         "email": "ministerium@zauberei.at",
+        "passwort": "HexHex33!",
         "token": "",
         "renewalToken": ""
         
@@ -25,6 +27,7 @@
         "firstName": "Nenad",
         "lastName": "Milutinovic",
         "email": "digitaler@zug.at",
+        "passwort": "Abfahrtum2!",
         "token": "",
         "renewalToken": ""
         

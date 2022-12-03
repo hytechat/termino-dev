@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:termino_frontend/classes/User.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -13,16 +16,34 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
 
   //2 Controller um User Input zu holen
-  final MailController = TextEditingController();
+  final UserController = TextEditingController();
   final PasswController = TextEditingController();
 
-      @override
+  @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    MailController.dispose();
+    UserController.dispose();
     PasswController.dispose();
     super.dispose();
   }
+
+  void loginFehler() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text('Der User oder das Passwort sind nicht korrekt!'),
+        behavior: SnackBarBehavior.floating,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 4, milliseconds: 3, microseconds: 1),
+        action: SnackBarAction(
+          label: 'Verstanden',
+          textColor: Colors.white,
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        )));
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +70,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
-                  controller: MailController,
+                  controller: UserController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
@@ -88,11 +109,13 @@ class _LoginState extends State<Login> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Das Feld kann nicht leer sein!";
-                    } else if (value!.isEmpty ||
+                    }
+                    /*else if (value!.isEmpty ||
                         !RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
                             .hasMatch(value!)) {
                       return "Notwendig sind: Großbuchstabe, Zahl und Sonderzeichen!";
-                    } else {
+                    } */
+                    else {
                       return null;
                     }
                   },
@@ -114,11 +137,19 @@ class _LoginState extends State<Login> {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
+                      if (formKey.currentState!.validate() &&
+                          userCheck(
+                                  UserController.text, PasswController.text) ==
+                              true) {
                         Navigator.pushReplacementNamed(context, '/navigation');
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Login successful!')),
+                          const SnackBar(content: Text('Erfolgreicher Login!'), backgroundColor: Colors.green,),
                         );
+                      } else if (formKey.currentState!.validate() &&
+                          userCheck(
+                                  UserController.text, PasswController.text) ==
+                              false) {
+                        loginFehler();
                       }
                     },
                     child: const Text(
@@ -178,5 +209,18 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+}
+
+bool? userCheck(String name, String pw) {
+  bool check = false;
+  if (name == 'Admin' && pw == 'Termin0!') {
+    check = true;
+    return check;
+  } else if (name != 'Admin' || pw != 'Termin0!') {
+    check = false;
+    return check;
+  } else {
+    return null;
   }
 }

@@ -162,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     } else if (value!.isEmpty ||
                         !RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
                             .hasMatch(value!)) {
-                      return "Notwendig sind: Großbuchstabe, Zahl und Sonderzeichen!";
+                      return "Notwendig sind: Groß-, Kleinbuchstabe Zahl und Sonderzeichen!";
                     } else {
                       return null;
                     }
