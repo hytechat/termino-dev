@@ -147,6 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
+                  obscureText: true,
                   controller: PasswController,
                   decoration: InputDecoration(
                     filled: true,
@@ -175,6 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
+                  obscureText: true,
                   controller: PassWdhController,
                   decoration: InputDecoration(
                     filled: true,

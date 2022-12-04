@@ -98,6 +98,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
                   controller: PasswController,
+                  obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
