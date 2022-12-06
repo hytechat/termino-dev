@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:termino_frontend/classes/Option.dart';
+import 'package:termino_frontend/data/model/option_model.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/appbar_widget.dart';
+import 'package:termino_frontend/pages/pagesGeruest/profile_details/display_image_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/user_data.dart';
 
 class AbstimmungEinsehenPage extends StatefulWidget {
@@ -11,24 +14,38 @@ class AbstimmungEinsehenPage extends StatefulWidget {
   final String titel;
   final String place;
 
-  const AbstimmungEinsehenPage({super.key, required this.organizer, required this.titel, required this.place});
+  final List<OptionModel>? options;
+
+  const AbstimmungEinsehenPage(
+      {super.key,
+      required this.organizer,
+      required this.titel,
+      required this.place,
+      required this.options});
 
   @override
-  _AbstimmungEinsehenPage createState() => _AbstimmungEinsehenPage(organizer, titel, place);
+  _AbstimmungEinsehenPage createState() =>
+      _AbstimmungEinsehenPage(organizer, titel, place, options);
 }
 
 class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
   final String organizer2;
   final String titel2;
   final String place2;
+  final List<OptionModel>? options2;
 
   var user = UserData.myUser;
 
-  _AbstimmungEinsehenPage(this.organizer2, this.titel2, this.place2);
+  List<OptionModel> _openoptions = [];
+
+  _AbstimmungEinsehenPage(
+      this.organizer2, this.titel2, this.place2, this.options2);
 
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
+
+    bool isChecked = false;
 
     return Scaffold(
         appBar: buildAppBar(context),
@@ -93,10 +110,63 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
                 ),
               ],
             ),
-            Row(
+
+
+            
+                for (var i = 0; i < options2!.length; i++) 
+                 Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                
+                  Center(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.05,
+                        child: Image.network(user.image,width: 40, height: 40,),
+                      ),
+                  ),
+                  Center(
+                  child: SizedBox (
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: Text (
+                    user.name
+                  ),
+                  )
+                  ),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.30,
+                    child: TextFormField(
+                      decoration: const InputDecoration(labelText: 'Start'),
+                      initialValue: options2![i].startDate.toString(),
+                      enabled: false,
+                    ),
+                  ),
+                ),
+                 Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.30,
+                    child: TextFormField(
+                      decoration: const InputDecoration(labelText: 'Ende'),
+                      initialValue: options2![i].endDate.toString(),
+                      enabled: false,
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Checkbox(
+                    checkColor: Colors.lightGreen,
+                    fillColor: MaterialStateProperty.resolveWith(getColor),
+                    value: isChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked = !value!;
+                      });
+                    },
+                  ),
+                ),
+                 // Text ('Start Date ${options2![i].startDate}'),
+                /*
                 Center(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.55,
@@ -104,7 +174,7 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
                     child: DecoratedBox(
                         decoration: const BoxDecoration(color: Colors.grey)),
                   ),
-                )
+                )*/
               ],
             )
           ],
@@ -118,5 +188,16 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
   void navigateSecondPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);
+  }
+
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered, 
+      MaterialState.focused
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.lightGreen;
+    } return Colors.grey;
   }
 }
