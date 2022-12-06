@@ -100,7 +100,7 @@ Widget _buildMeineAbstimmungen() {
       trailing: basicIconButton(
           Icon(Icons.check),
           () {
-                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,));
+                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
           } // hier muss dann das entsprechende fenster geöffnet werden
           ,
           Color.fromARGB(255, 25, 217, 31)),
@@ -119,7 +119,7 @@ Widget _buildMeineAbstimmungen() {
       trailing: basicIconButton(
           Icon(Icons.hourglass_empty),
           () {
-                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,));
+                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place, options: meetings.options,));
           } // hier muss dann das entsprechende fenster geöffnet werden
           ,
           Color.fromARGB(255, 228, 182, 56)),
