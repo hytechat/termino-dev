@@ -11,6 +11,10 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final formKey = GlobalKey<FormState>();
 
+  //Booleans um Passwort aufzudecken
+  bool _obscureText = true;
+  bool _obscureText2 = true;
+
   //Controller um User Input zu holen
   final UserController = TextEditingController();
   final MailController = TextEditingController();
@@ -147,9 +151,19 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: _obscureText,
                   controller: PasswController,
                   decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                      child: Icon(_obscureText
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                    ),
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
@@ -176,9 +190,19 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: _obscureText2,
                   controller: PassWdhController,
                   decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _obscureText2 = !_obscureText2;
+                        });
+                      },
+                      child: Icon(_obscureText2
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                    ),
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
@@ -224,13 +248,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     shape: const StadiumBorder(),
                   ),
                   onPressed: () {
-                    if (formKey.currentState!.validate() && _checkBoxListTile == true) {
+                    if (formKey.currentState!.validate() &&
+                        _checkBoxListTile == true) {
                       Navigator.pushReplacementNamed(context, '/navigation');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                             content: Text('Registration successful!')),
                       );
-                    } else if (formKey.currentState!.validate() && _checkBoxListTile == false) {
+                    } else if (formKey.currentState!.validate() &&
+                        _checkBoxListTile == false) {
                       datenschutzMessage();
                     }
                   },

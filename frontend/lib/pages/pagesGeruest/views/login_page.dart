@@ -15,6 +15,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
 
+  bool _obscureText = true;
+
   //2 Controller um User Input zu holen
   final UserController = TextEditingController();
   final PasswController = TextEditingController();
@@ -43,7 +45,7 @@ class _LoginState extends State<Login> {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
         )));
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +100,16 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextFormField(
                   controller: PasswController,
-                  obscureText: true,
+                  obscureText: _obscureText,
                   decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                      child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                    ),
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
                     border: OutlineInputBorder(
@@ -144,7 +154,10 @@ class _LoginState extends State<Login> {
                               true) {
                         Navigator.pushReplacementNamed(context, '/navigation');
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Erfolgreicher Login!'), backgroundColor: Colors.green,),
+                          const SnackBar(
+                            content: Text('Erfolgreicher Login!'),
+                            backgroundColor: Colors.green,
+                          ),
                         );
                       } else if (formKey.currentState!.validate() &&
                           userCheck(
