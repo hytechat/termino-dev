@@ -1,4 +1,4 @@
-//Kann zu einem späteren Zeitpunkt exportiert werden und als eines Dart-File erstellt werden
+//Kann zu einem späteren Zeitpunkt exportiert werden und als eine Dart-File erstellt werden
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,7 +6,7 @@ class User {
   String image;
   String name;
   String email;
-  String phone; //Wieso wird Phone verlangt?
+  String phone;
 
   // Constructor
   User({
@@ -50,9 +50,9 @@ class UserData {
 
   static User myUser = User(
     image:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a2/Rowan_Atkinson%2C_2011.jpg",
-    name: 'Jonny English 000',
-    email: 'jonny.english@gmail.com',
+        "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png",
+    name: 'Admin',
+    email: 'Admin@gmail.com',
     phone: '(208) 206-5039',
   );
 

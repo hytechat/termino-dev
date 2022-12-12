@@ -27,7 +27,7 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
             elevation: 0,
             toolbarHeight: 10,
           ),
-          Center(
+          const Center(
               child: Padding(
             padding: EdgeInsets.only(bottom: 70),
           )),
@@ -39,7 +39,7 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
                 imagePath: user.image,
                 onPressed: () {},
               )),
-          Center(
+          const Center(
               child: Padding(
             padding: EdgeInsets.only(bottom: 50),
           )),
@@ -55,7 +55,8 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
                   shape: const StadiumBorder(),
                 ),
                 onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/login', (_) => false);
                 },
                 child: const Text(
                   "Logout",
@@ -70,25 +71,25 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
   // Widget builds the display item with the proper formatting to display the user's info
   Widget buildUserInfoDisplay(String getValue, String title, Widget editPage) =>
       Padding(
-          padding: EdgeInsets.only(bottom: 25),
+          padding: const EdgeInsets.only(bottom: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                   //color: Color.fromRGBO(195, 16, 4, 1),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 1,
               ),
               Container(
                   width: 350,
                   height: 40,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
                     //color: Color.fromRGBO(195, 16, 4, 1),
@@ -102,10 +103,12 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
                             },
                             child: Text(
                               getValue,
-                              style: TextStyle(fontSize: 16, height: 1.4,
-                              color: Colors.black),
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  height: 1.4,
+                                  color: Colors.black),
                             ))),
-                    Icon(
+                    const Icon(
                       Icons.keyboard_arrow_right,
                       //color: Color.fromRGBO(195, 16, 4, 1),
                       size: 40.0,
@@ -114,44 +117,39 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
             ],
           ));
 
-
- Widget buildEMailField(String getValue, String title) =>
-      Padding(
-          padding: EdgeInsets.only(bottom: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  //color: Color.fromRGBO(195, 16, 4, 1),
-                ),
-              ),
-              SizedBox(
-                height: 1,
-              ),
-              Container(
-                  width: 350,
-                  height: 40,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                    //color: Color.fromRGBO(195, 16, 4, 1),
-                    width: 1,
-                  ))),
-                            child: Text(
-                              getValue,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 16, height: 1.4,
-                              color: Colors.black),
-                            ),
-                  )
-            ],
-          ));
-
-
+  Widget buildEMailField(String getValue, String title) => Padding(
+      padding: const EdgeInsets.only(bottom: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+              //color: Color.fromRGBO(195, 16, 4, 1),
+            ),
+          ),
+          const SizedBox(
+            height: 1,
+          ),
+          Container(
+            width: 350,
+            height: 40,
+            decoration: const BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+              //color: Color.fromRGBO(195, 16, 4, 1),
+              width: 1,
+            ))),
+            child: Text(
+              getValue,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 16, height: 1.4, color: Colors.black),
+            ),
+          )
+        ],
+      ));
 
   // Refrshes the Page after updating user info.
   FutureOr onGoBack(dynamic value) {
