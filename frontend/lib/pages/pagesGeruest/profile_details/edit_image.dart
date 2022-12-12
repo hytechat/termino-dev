@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:termino_frontend/config/config_expo.dart';
 import 'appbar_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/user_data.dart';
 
@@ -20,14 +21,15 @@ class _EditImagePageState extends State<EditImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colourpalette.hellbeigeGrau,
       appBar: buildAppBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
               width: 330,
-              child: const Text(
+              child: Text(
                 "Neues Foto hochladen:",
                 style: TextStyle(
                   fontSize: 20,

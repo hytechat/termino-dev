@@ -20,6 +20,7 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
     final user = UserData.myUser;
 
     return Scaffold(
+      backgroundColor: Colourpalette.hellbeigeGrau,
       body: Column(
         children: [
           AppBar(
