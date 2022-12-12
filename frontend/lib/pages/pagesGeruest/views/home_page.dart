@@ -43,22 +43,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final MeetingRepostiory meetingRepostiory = JsonMeetingRepository();
-  List <MeetingModel> _meetings = [];
+  List <MeetingModel> _votes = [];
   
   List <MeetingModel> _closedmeetings = [];
   List <MeetingModel> _openmeetings = [];
-
 
   @override
   void initState() {
     super.initState();
 
     meetingRepostiory.getMeetingList().then((meeting) => {
-          setState(() => {_meetings = meeting})
-        });
+          setState(() => {_votes = meeting})
+          }
+        );
   }
-
-     
 
 @override
   Widget build(BuildContext context) {
@@ -84,10 +82,9 @@ Widget _buildMeineAbstimmungen() {
         header: const Text('Meine  Abstimmungen'),
         children: [
           Column(
-            children: _meetings
+            children: _votes
                 .map((_meetings) => _buildChoose(_meetings)) 
                 .toList(),
-
           ), 
         ],
       ),
@@ -109,7 +106,9 @@ Widget _buildMeineAbstimmungen() {
           style: TextStyle(
   	      fontWeight: FontWeight.bold),
            ),
-          subtitle: Text('erstellt von '+meetings.organizerName),
+          subtitle: meetings.organizerName == 'Admin'?
+              Text ('selbst erstellt')
+              : Text ('erstellt von ' +meetings.organizerName)
     );
   }
 
@@ -128,19 +127,20 @@ Widget _buildMeineAbstimmungen() {
           style: TextStyle(
   	      fontWeight: FontWeight.bold),
            ),
-          subtitle: Text('erstellt von '+meetings.organizerName),
+          subtitle: meetings.organizerName == 'Admin'?
+              Text ('selbst erstellt')
+              : Text ('erstellt von ' +meetings.organizerName)
     );
   }
 
   Widget _buildChoose(MeetingModel meetings) {
-      if(!meetings.getStatus()!){
-         return 
+      if(meetings.getStatus() == false){
+         return
           _buildVoteOpen(meetings);
       } 
       else
        { 
-        return
-          _buildVoteFinished(meetings);
+        return SizedBox();
       }
       }
 
@@ -152,7 +152,6 @@ void navigateSecondPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);
   }
- 
 
 }
   /*@override

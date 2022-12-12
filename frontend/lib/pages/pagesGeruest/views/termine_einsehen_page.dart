@@ -1,139 +1,135 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart';
+import 'package:intl/intl.dart';
+import 'package:termino_frontend/classes/meeting.dart';
+import 'package:termino_frontend/config/config_expo.dart';
+import 'package:termino_frontend/data/model/meeting_model.dart';
+import 'package:termino_frontend/data/model/meeting_model.dart';
+import 'package:termino_frontend/data/model/option_model.dart';
+import 'package:termino_frontend/data/model/vote_model.dart';
+import 'package:termino_frontend/data/repository/meeting_repository.dart';
+import 'package:termino_frontend/pages/abstimmung_teilnehmen_popUP/viewsa/abstimmung_teilnehmen_page.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/abstimmung_einsehen_page.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/register_page_old.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/termine_einsehen_page.dart';
+import 'package:termino_frontend/data/repository/meeting_repository.dart';
+import 'dart:async' show Future, FutureOr;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:termino_frontend/config/config_expo.dart';
 
-class TermineEinsehenPage extends StatefulWidget {
-  //--------------muss natürlich noch durch objekte oder was auchg immer gemacht werden------------------------------
-  List<String> meineAbstimmungen = ['1', '2'];
-  List<String> teilnehmendeAbstimmungen = ['1', '2'];
-  List<String> meineTermine = ['1', '2'];
-  List<String> teilnehmendeTermine = ['1', '2'];
-//---------------------------------------------------------------------------------------------------
 
-  @override
-  _TermineEinsehenPageState createState() => _TermineEinsehenPageState();
+class TermineEinsehenPage extends StatefulWidget {
+
+
+/*Future<List<MeetingModel>> findAll() async {
+    String jsonFile = await rootBundle.loadString('assets/data/one_meeting.json');
+    final jsonArray = json.decode(jsonFile) as Iterable;
+
+    List<MeetingModel> meetings =
+        List<MeetingModel>.from(jsonArray.map((e) => MeetingModel.fromJson(e)));
+
+    return Future.value(meetings);
+  }
+  */
+
+@override
+_TermineEinsehenPageState createState() => _TermineEinsehenPageState();
+
 }
 
 class _TermineEinsehenPageState extends State<TermineEinsehenPage> {
-  final formKey = GlobalKey<FormState>();
+  final MeetingRepostiory meetingRepostiory = JsonMeetingRepository();
+  List <MeetingModel> _meetings = [];
+  
+  List <MeetingModel> _closedmeetings = [];
+  List <MeetingModel> _openmeetings = [];
+
+
   @override
+  void initState() {
+    super.initState();
+
+    meetingRepostiory.getMeetingList().then((meeting) => {
+          setState(() => {_meetings = meeting})
+        });
+  }
+
+     
+
+@override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        /*child: Center(*/
-          child: Form(
-            key: formKey,
-            onChanged: () {
-              Form.of(primaryFocus!.context!)?.save();
-            },
-            child: Column(
-              children: [
-                _buildSectionMeineOffeneAbstimmungen(),
-                _buildSectionAbstimmungenAnDenenIchTeilnehme(),
-                _buildSectionMeineTermine(),
-                _buildSectionTermineAnDenenIchTeilNehme(),
-              ],
-            ),
-          ),
-        //),
-      );
+    return CupertinoPageScaffold(
+      backgroundColor: Colourpalette.hellbeigeGrau,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            _buildMeineTermine(),
+
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget _buildSectionMeineOffeneAbstimmungen() {
+Widget _buildMeineTermine() {
     return Material(
+      color: Colourpalette.hellbeigeGrau,
       child: CupertinoFormSection.insetGrouped(
-        //ich nfinde das sollte iwie zamgefasst werdfen damit es überall fix gleich is
-        margin: const EdgeInsets.all(12),
-        header: const Text('Meine Offenen Abstimmungen'),
+        backgroundColor: Colourpalette.hellbeigeGrau,
+        header: const Text('Meine  Termine'),
         children: [
-          ListTile(
-            trailing:
-                CupertinoButton(child: Text('View All'), onPressed: () {}),
-          ),
           Column(
-            children: widget.meineAbstimmungen
-                .map((item) => _buildEinzelneTerminAuswahl(
-                    item)) // meine Idee bei den Map funktionen wäre nur die ersten 3 oder 5 anzuzeigen und dann muss man über view all die anderen ansehen
+            children: _meetings
+                .map((_meetings) => _buildChoose(_meetings)) 
                 .toList(),
-          ),
+
+          ), 
         ],
       ),
     );
   }
 
-  Widget _buildSectionAbstimmungenAnDenenIchTeilnehme() {
-    return Material(
-      child: CupertinoFormSection.insetGrouped(
-        //ich nfinde das sollte iwie zamgefasst werdfen damit es überall fix gleich is
-        margin: const EdgeInsets.all(12),
-        header: const Text('Abstimmungen an denen ich teilnehme'),
-        children: [
-          ListTile(
-            trailing:
-                CupertinoButton(child: Text('View All'), onPressed: () {}),
-          ),
-          Column(
-            children: widget.teilnehmendeAbstimmungen
-                .map((item) => _buildEinzelneTerminAuswahl(item))
-                .toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSectionMeineTermine() {
-    return Material(
-      child: CupertinoFormSection.insetGrouped(
-        //ich nfinde das sollte iwie zamgefasst werdfen damit es überall fix gleich is
-        margin: const EdgeInsets.all(12),
-        header: const Text('Meine fixierten Termine'),
-        children: [
-          ListTile(
-            trailing:
-                CupertinoButton(child: Text('View All'), onPressed: () {}),
-          ),
-          Column(
-            children: widget.meineTermine
-                .map((item) => _buildEinzelneTerminAuswahl(item))
-                .toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSectionTermineAnDenenIchTeilNehme() {
-    return Material(
-      child: CupertinoFormSection.insetGrouped(
-          //ich nfinde das sollte iwie zamgefasst werdfen damit es überall fix gleich is
-          margin: const EdgeInsets.all(12),
-          header: const Text('Termine an denen ich teilnehme'),
-          children: [
-            ListTile(
-              trailing:
-                  CupertinoButton(child: Text('View All'), onPressed: () {}),
-            ),
-            Column(
-              children: widget.teilnehmendeTermine
-                  .map((item) => _buildEinzelneTerminAuswahl(item))
-                  .toList(),
-            ),
-          ]),
-    );
-  }
-
-  Widget _buildEinzelneTerminAuswahl(String item) {
-    return ListTile(
+  
+  Widget _buildTermin(MeetingModel meetings) {
+     return ListTile (
       trailing: basicIconButton(
-          Icon(Icons.arrow_back),
-          () {} // hier muss dann das entsprechende fenster geöffnet werden
+          Icon(Icons.edit_calendar),
+          () {
+                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
+          } // hier muss dann das entsprechende fenster geöffnet werden
           ,
-          Colourpalette.bundesrot),
-      leading: Text('Titel der Abstimmung/Termins'),
-      title: Text('zB Final date bei einem Termin'),
-      subtitle: Text('Organisator ?'),
+          Color.fromARGB(255, 6, 6, 6)),
+      title: Text(
+          meetings.title,
+          style: TextStyle(
+  	      fontWeight: FontWeight.bold),
+           ),
+          subtitle: 
+               Text ('Hier kommt das Datum hin')
     );
-  } // muss natürlich für jede section ei eigenes gebautrbwerden a´ber das mach ich dann erst mit Mockup
+  }
 
+Widget _buildChoose(MeetingModel meetings) {
+      if(meetings.getStatus() == true){
+         return
+          _buildTermin(meetings);
+      } 
+      else
+       { 
+        return SizedBox();
+      }
+      }
+
+FutureOr onGoBack(dynamic value) {
+    setState(() {});
+  }
+
+void navigateSecondPage(Widget editForm) {
+    Route route = MaterialPageRoute(builder: (context) => editForm);
+    Navigator.push(context, route).then(onGoBack);
+  }
 }

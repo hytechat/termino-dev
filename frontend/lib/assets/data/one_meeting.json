@@ -26,14 +26,14 @@
         "isMailMandatory": false,
         "isMaybeable": true,
         "wholeday": false,
-        "isClosed": true
+        "isClosed": false
     },
     {   
         "id": "999",
         "title": "Silvester",
         "place": "somewhere",
         "description": "some kind of description",
-        "organizerName": "Martin",
+        "organizerName": "Admin",
         "organizerEmail": "organizerEmail@mail.com",
         "createdAt": null,
         "closedAt": null,
@@ -65,7 +65,7 @@
         "organizerName": "Martin Krüger",
         "organizerEmail": "organizerEmail@mail.com",
         "createdAt": null,
-        "closedAt": null,
+        "closedAt": "6. Jänner 2023",
         "options": [
             {
                 "id": "1",
