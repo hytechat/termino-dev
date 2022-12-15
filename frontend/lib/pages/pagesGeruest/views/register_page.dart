@@ -103,14 +103,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    labelText: 'Username',
+                    labelText: 'Benutzername',
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     } else if (value!.isEmpty ||
                         !RegExp(r'^[a-zA-Z0-9.a-zA-Z0-9]').hasMatch(value)) {
-                      return "Dieser Name entspricht nicht unseren Guidelines!"; //To be defined was die Guidelines sind - generell was hier alles zulässig sein darf
+                      return "Dieser Name entspricht nicht den Richtlinien!"; //To be defined was die Guidelines sind - generell was hier alles zulässig sein darf
                     } else {
                       return null;
                     }
@@ -134,11 +134,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     } else if (value!.isEmpty ||
                         !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value)) {
-                      return "Diese Mail ist ungültig!";
+                      return "Diese E-Mail Adresse ist ungültig!";
                     } else {
                       return null;
                     }
@@ -173,11 +173,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     } else if (value!.isEmpty ||
                         !RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
                             .hasMatch(value!)) {
-                      return "Notwendig sind: Groß-, Kleinbuchstabe Zahl und Sonderzeichen!";
+                      return "Notwendig sind: Groß-, Kleinbuchstabe, Zahl und Sonderzeichen!";
                     } else {
                       return null;
                     }
@@ -212,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     } else if (PassWdhController.text != PasswController.text) {
                       return "Die Passwörter stimme nicht überein!";
                     } else {

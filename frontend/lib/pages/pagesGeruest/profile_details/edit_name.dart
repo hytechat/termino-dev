@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
+import 'package:termino_frontend/config/config_expo.dart';
 import 'appbar_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/user_data.dart';
 
@@ -32,6 +33,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colourpalette.hellbeigeGrau,
         appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
@@ -39,9 +41,9 @@ class EditNameFormPageState extends State<EditNameFormPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                   width: 330,
-                  child: const Text(
+                  child: Text(
                     "Wie lautet dein Name?",
                     style: TextStyle(
                       fontSize: 25,
@@ -67,8 +69,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               }
                               return null;
                             },
-                            decoration:
-                                InputDecoration(labelText: 'Vorname'),
+                            decoration: InputDecoration(labelText: 'Vorname'),
                             controller: firstNameController,
                           ))),
                   Padding(
@@ -101,10 +102,11 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                         height: 50,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                             backgroundColor: const Color.fromRGBO(195, 16, 4, 1),
-                             minimumSize: const Size.fromHeight(2),
-                             shape: const StadiumBorder(),
-                             ),
+                            backgroundColor:
+                                const Color.fromRGBO(195, 16, 4, 1),
+                            minimumSize: const Size.fromHeight(2),
+                            shape: const StadiumBorder(),
+                          ),
                           onPressed: () {
                             // Validate returns true if the form is valid, or false otherwise.
                             if (_formKey.currentState!.validate() &&
@@ -122,10 +124,6 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           ),
                         ),
                       )))
-
-
-
-
             ],
           ),
         ));

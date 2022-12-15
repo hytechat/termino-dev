@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/classes/Option.dart';
+import 'package:termino_frontend/config/colours.dart';
 import 'package:termino_frontend/data/model/option_model.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/appbar_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/display_image_widget.dart';
@@ -48,6 +49,7 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
     bool isChecked = false;
 
     return Scaffold(
+      backgroundColor: Colourpalette.hellbeigeGrau,
         appBar: buildAppBar(context),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

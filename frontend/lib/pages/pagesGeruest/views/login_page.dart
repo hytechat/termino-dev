@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    labelText: 'Username',
+                    labelText: 'Benutzername',
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
