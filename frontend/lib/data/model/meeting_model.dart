@@ -13,7 +13,7 @@ class MeetingModel {
   final bool wholeday; //eigentlich bool
   final bool? isClosed; //eigentlich bool
   final String? createdAt;
-  final String? closedAt;
+  final String closedAt;
   final List<OptionModel>? options;
   //final String options; //List<OptionModel>
 
@@ -30,7 +30,7 @@ class MeetingModel {
     required this.wholeday,
     required this.isClosed,
     this.createdAt,
-    this.closedAt,
+    required this.closedAt,
     this.options,
   });
 

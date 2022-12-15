@@ -7,7 +7,7 @@
         "organizerName": "Markus",
         "organizerEmail": "organizerEmail@mail.com",
         "createdAt": null,
-        "closedAt": null,
+        "closedAt": "24. Dezember 2022",
         "options": [
             {
                 "id": "1",
@@ -36,7 +36,7 @@
         "organizerName": "Admin",
         "organizerEmail": "organizerEmail@mail.com",
         "createdAt": null,
-        "closedAt": null,
+        "closedAt": "31. Dezember 2022",
         "options": [
             {
                 "id": "1",

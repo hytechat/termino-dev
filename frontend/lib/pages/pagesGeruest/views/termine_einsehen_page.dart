@@ -97,7 +97,7 @@ Widget _buildMeineTermine() {
   Widget _buildTermin(MeetingModel meetings) {
      return ListTile (
       trailing: basicIconButton(
-          Icon(Icons.edit_calendar),
+          Icon(Icons.import_export),
           () {
                         navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
           } // hier muss dann das entsprechende fenster geöffnet werden
@@ -109,7 +109,7 @@ Widget _buildMeineTermine() {
   	      fontWeight: FontWeight.bold),
            ),
           subtitle: 
-               Text ('Hier kommt das Datum hin')
+               Text (meetings.closedAt)
     );
   }
 

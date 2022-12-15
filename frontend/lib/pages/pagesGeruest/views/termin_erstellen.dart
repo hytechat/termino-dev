@@ -189,6 +189,7 @@ class _TerminErstellenPageState extends State<TerminErstellenPage> {
                 isMailMandatory: _isEmailOptional.value,
                 isMaybeable: _isMayable.value,
                 wholeday: _isGanzTagTermin.value,
+                closedAt: "",
                 isClosed: false
                 //,
                 //options: options
