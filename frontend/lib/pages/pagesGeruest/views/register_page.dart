@@ -250,10 +250,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   onPressed: () {
                     if (formKey.currentState!.validate() &&
                         _checkBoxListTile == true) {
-                      Navigator.pushReplacementNamed(context, '/navigation');
+                      Navigator.pushReplacementNamed(context, '/login');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: Text('Registration successful!')),
+                            content: Text('Erfolgreiche Registrierung!'),
+                            backgroundColor: Colors.green,
+                            ),
                       );
                     } else if (formKey.currentState!.validate() &&
                         _checkBoxListTile == false) {

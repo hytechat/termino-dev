@@ -14,7 +14,6 @@ import 'package:termino_frontend/data/model/vote_model.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'package:termino_frontend/pages/abstimmung_teilnehmen_popUP/viewsa/abstimmung_teilnehmen_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/abstimmung_einsehen_page.dart';
-import 'package:termino_frontend/pages/pagesGeruest/views/register_page_old.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termine_einsehen_page.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'dart:async' show Future, FutureOr;

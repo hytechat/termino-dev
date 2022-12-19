@@ -60,14 +60,18 @@ class _LoginState extends State<Login> {
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: height * 0.25),
+              SizedBox(height: height * 0.10),
+              Image.asset(
+                'assets/terminoLogo.png',
+                fit: BoxFit.scaleDown,
+                height: 50, // set your height
+                width: 250, // and width here
+              ),
+              SizedBox(height: height * 0.10),
               const Text(
                 "Login",
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: height * 0.05,
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -83,7 +87,7 @@ class _LoginState extends State<Login> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     } else if (value!.isEmpty ||
                         !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                       return "Name ist nich korrekt!";
@@ -108,7 +112,9 @@ class _LoginState extends State<Login> {
                           _obscureText = !_obscureText;
                         });
                       },
-                      child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                      child: Icon(_obscureText
+                          ? Icons.visibility
+                          : Icons.visibility_off),
                     ),
                     filled: true,
                     fillColor: const Color.fromRGBO(230, 230, 230, 1),
@@ -119,7 +125,7 @@ class _LoginState extends State<Login> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Das Feld kann nicht leer sein!";
+                      return "Das Feld darf nicht leer sein!";
                     }
                     /*else if (value!.isEmpty ||
                         !RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
@@ -181,13 +187,26 @@ class _LoginState extends State<Login> {
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               ),
-              const Divider(
-                color: Colors.black,
-                height: 50,
-                thickness: 2,
-                indent: 60,
-                endIndent: 60,
-              ),
+              Container(
+                  height: 80,
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      //padding: const EdgeInsets.symmetric(
+                      //  horizontal: 40.0, vertical: 20.0),
+                      backgroundColor: const Color.fromRGBO(217, 211, 199, 1),
+                      minimumSize: const Size.fromHeight(2),
+                      shape: const StadiumBorder(),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: const Text(
+                      'REGISTRIEREN',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
+                  )),
+/*
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
@@ -201,6 +220,25 @@ class _LoginState extends State<Login> {
                       fontSize: 18, decoration: TextDecoration.underline),
                 ),
               ),
+*/
+              const Divider(
+                color: Colors.black,
+                height: 50,
+                thickness: 2,
+                indent: 60,
+                endIndent: 60,
+              ),
+              TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color.fromRGBO(46, 88, 235, 1),
+                ),
+                child: const Text(
+                  'Als Gast fortfahren',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              ),
+              /*
               Container(
                   height: 80,
                   padding: const EdgeInsets.all(20),
@@ -218,6 +256,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                   )),
+                  */
             ],
           ),
         ),
