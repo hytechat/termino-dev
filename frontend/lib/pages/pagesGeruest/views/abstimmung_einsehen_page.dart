@@ -35,6 +35,11 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
   final String place2;
   final List<OptionModel>? options2;
 
+  int currentIndex = 0;
+
+    PageController pageController = PageController(initialPage: 0);
+
+
   var user = UserData.myUser;
 
   List<OptionModel> _openoptions = [];
@@ -43,13 +48,18 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
       this.organizer2, this.titel2, this.place2, this.options2);
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
 
     bool isChecked = false;
 
     return Scaffold(
-      backgroundColor: Colourpalette.hellbeigeGrau,
+        backgroundColor: Colourpalette.hellbeigeGrau,
         appBar: buildAppBar(context),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,63 +122,60 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
                 ),
               ],
             ),
-
-
-            
-                for (var i = 0; i < options2!.length; i++) 
-                 Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                
+            for (var i = 0; i < options2!.length; i++)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.05,
+                      child: Image.network(
+                        user.image,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  ),
                   Center(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                        child: Image.network(user.image,width: 40, height: 40,),
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: Text(user.name),
+                  )),
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      child: TextFormField(
+                        decoration: const InputDecoration(labelText: 'Start'),
+                        initialValue: options2![i].startDate.toString(),
+                        enabled: false,
                       ),
+                    ),
                   ),
                   Center(
-                  child: SizedBox (
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    child: Text (
-                    user.name
-                  ),
-                  )
-                  ),
-                Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.30,
-                    child: TextFormField(
-                      decoration: const InputDecoration(labelText: 'Start'),
-                      initialValue: options2![i].startDate.toString(),
-                      enabled: false,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      child: TextFormField(
+                        decoration: const InputDecoration(labelText: 'Ende'),
+                        initialValue: options2![i].endDate.toString(),
+                        enabled: false,
+                      ),
                     ),
                   ),
-                ),
-                 Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.30,
-                    child: TextFormField(
-                      decoration: const InputDecoration(labelText: 'Ende'),
-                      initialValue: options2![i].endDate.toString(),
-                      enabled: false,
+                  Center(
+                    child: Checkbox(
+                      checkColor: Colors.lightGreen,
+                      fillColor: MaterialStateProperty.resolveWith(getColor),
+                      value: isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = !value!;
+                        });
+                      },
                     ),
                   ),
-                ),
-                Center(
-                  child: Checkbox(
-                    checkColor: Colors.lightGreen,
-                    fillColor: MaterialStateProperty.resolveWith(getColor),
-                    value: isChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = !value!;
-                      });
-                    },
-                  ),
-                ),
-                 // Text ('Start Date ${options2![i].startDate}'),
-                /*
+                  // Text ('Start Date ${options2![i].startDate}'),
+                  /*
                 Center(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.55,
@@ -177,9 +184,27 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
                         decoration: const BoxDecoration(color: Colors.grey)),
                   ),
                 )*/
-              ],
-            )
+                ],
+              )
           ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: const Color.fromRGBO(217, 211, 199, 1),
+          currentIndex: currentIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.house), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.add), label: "Neu"),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Termine"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+          ],
+          onTap: (newIndex) {
+            pageController.animateToPage(newIndex,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease);
+          },
         ));
   }
 
@@ -195,11 +220,12 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
-      MaterialState.hovered, 
+      MaterialState.hovered,
       MaterialState.focused
     };
     if (states.any(interactiveStates.contains)) {
       return Colors.lightGreen;
-    } return Colors.grey;
+    }
+    return Colors.grey;
   }
 }
