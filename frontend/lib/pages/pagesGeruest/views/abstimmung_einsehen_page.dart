@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:js_util';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,21 +9,29 @@ import 'package:termino_frontend/data/model/option_model.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/appbar_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/display_image_widget.dart';
 import 'package:termino_frontend/pages/pagesGeruest/profile_details/user_data.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/home_page.dart';
 
 class AbstimmungEinsehenPage extends StatefulWidget {
 // const AbstimmungEinsehenPage({Key? key}) : super(key: key);
-  final String organizer;
-  final String titel;
-  final String place;
+  late String organizer;
+  late String titel;
+  late String place;
 
-  final List<OptionModel>? options;
+  late List<OptionModel>? options;
 
-  const AbstimmungEinsehenPage(
+  AbstimmungEinsehenPage(
       {super.key,
       required this.organizer,
       required this.titel,
       required this.place,
       required this.options});
+
+  AbstimmungEinsehenPage.emptyConstructor({super.key}) {
+    this.organizer = "Test";
+    this.titel = "test2";
+    this.place = "vienna";
+    this.options = <OptionModel>[];
+  }
 
   @override
   _AbstimmungEinsehenPage createState() =>
@@ -30,15 +39,14 @@ class AbstimmungEinsehenPage extends StatefulWidget {
 }
 
 class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
-  final String organizer2;
-  final String titel2;
-  final String place2;
-  final List<OptionModel>? options2;
+  String organizer2;
+  String titel2;
+  String place2;
+  List<OptionModel>? options2;
 
   int currentIndex = 0;
 
-    PageController pageController = PageController(initialPage: 0);
-
+  PageController pageController = PageController(initialPage: 0);
 
   var user = UserData.myUser;
 
@@ -61,16 +69,24 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
     return Scaffold(
         backgroundColor: Colourpalette.hellbeigeGrau,
         appBar: buildAppBar(context),
-        body: Column(
+        body: 
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              width: 300,
-              child: Text(
-                "Abstimmung einsehen",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                    child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.98,
+                  child: Text(
+                    "Abstimmung einsehen",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ))
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -197,13 +213,18 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.house), label: "Home"),
             BottomNavigationBarItem(icon: Icon(Icons.add), label: "Neu"),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Termine"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month), label: "Termine"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
           ],
           onTap: (newIndex) {
+            
+                                    Navigator.pushReplacementNamed(context, '/navigation');
+            /*
             pageController.animateToPage(newIndex,
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.ease);
+                */
           },
         ));
   }
