@@ -11,6 +11,7 @@ import 'package:termino_frontend/data/model/vote_model.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'package:termino_frontend/pages/abstimmung_teilnehmen_popUP/viewsa/abstimmung_teilnehmen_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/abstimmung_einsehen_page.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/termin_datails_page.dart';
 import 'package:termino_frontend/pages/pagesGeruest/views/termine_einsehen_page.dart';
 import 'package:termino_frontend/data/repository/meeting_repository.dart';
 import 'dart:async' show Future, FutureOr;
@@ -93,24 +94,51 @@ Widget _buildMeineTermine() {
   }
 
   
-  Widget _buildTermin(MeetingModel meetings) {
+Widget _buildTermin(MeetingModel meetings) {
      return ListTile (
-      trailing: basicIconButton(
-          Icon(Icons.import_export),
-          () {
-            navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
-          } // hier muss dann das entsprechende fenster geöffnet werden
-          ,
-          Color.fromARGB(255, 6, 6, 6)),
+         trailing: Wrap(
+            spacing: 10,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.download),
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Termin speichern'),
+                  content: const Text('Termin konnte leider nicht heruntergeladen werden.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+            )
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.calendar_month,
+                ),
+                onPressed: () {
+                        navigateSecondPage(
+                          TerminDetailsPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,)
+                          );
+                },
+              ),
+            ],
+          ),         
+
       title: Text(
           meetings.title,
           style: TextStyle(
-  	      fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.bold),
            ),
-          subtitle: 
+          subtitle:
                Text (meetings.closedAt)
     );
   }
+
+
 
 Widget _buildChoose(MeetingModel meetings) {
       if(meetings.getStatus() == true){
