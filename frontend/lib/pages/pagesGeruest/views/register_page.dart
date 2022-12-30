@@ -253,9 +253,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       Navigator.pushReplacementNamed(context, '/login');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: Text('Ihnen wird eine Mail zugesendet um die Registrierung abzuschließen!'),
+                            content: Text('Ihnen wird eine Mail zugesendet um die Registrierung abzuschließen!', style: TextStyle(fontSize: 15)),
                             duration: Duration(seconds: 5),
                             backgroundColor: Colors.green,
+                            
                             ),
                       );
                     } else if (formKey.currentState!.validate() &&
