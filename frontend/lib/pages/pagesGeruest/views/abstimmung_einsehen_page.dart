@@ -50,7 +50,6 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
 
     return Scaffold(
       backgroundColor: Colourpalette.hellbeigeGrau,
-        appBar: buildAppBar(context),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

@@ -22,11 +22,14 @@ class _EditImagePageState extends State<EditImagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colourpalette.hellbeigeGrau,
-      appBar: buildAppBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          const Divider(
+            color: Colors.white,
+            height: 30,
+          ),
           const SizedBox(
               width: 330,
               child: Text(
@@ -67,10 +70,10 @@ class _EditImagePageState extends State<EditImagePage> {
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(195, 16, 4, 1),
-                      minimumSize: const Size.fromHeight(2),
-                      shape: const StadiumBorder(),
-                    ),
+                        backgroundColor: const Color.fromRGBO(195, 16, 4, 1),
+                        minimumSize: const Size.fromHeight(2),
+                        shape: const StadiumBorder(),
+                      ),
                       onPressed: () {},
                       child: const Text(
                         'Akzeptieren',

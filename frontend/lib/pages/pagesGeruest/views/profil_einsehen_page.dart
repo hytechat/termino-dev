@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/config/colours.dart';
 import 'package:termino_frontend/config/icons.dart';
+import 'package:termino_frontend/pages/pagesGeruest/views/login_page.dart';
 
 import '../profile_details/display_image_widget.dart';
 import '../profile_details/edit_image.dart';
@@ -56,8 +57,19 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
                   shape: const StadiumBorder(),
                 ),
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/login', (_) => false);
+                  //Navigator.of(context).pushNamed('login');
+                  /*Navigator
+                  .of(context)
+                  .pushReplacement(MaterialPageRoute(builder:(context) => const Login()));*/
+                     Navigator.of(context, rootNavigator: true)
+                              .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return const Login();
+                              },
+                            ),
+                            (_) => false,
+                          );
                 },
                 child: const Text(
                   "Logout",
@@ -146,7 +158,8 @@ class _ProfilEinsehenPageState extends State<ProfilEinsehenPage> {
             child: Text(
               getValue,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16, height: 1.4, color: Colors.black),
+              style: const TextStyle(
+                  fontSize: 16, height: 1.4, color: Colors.black),
             ),
           )
         ],

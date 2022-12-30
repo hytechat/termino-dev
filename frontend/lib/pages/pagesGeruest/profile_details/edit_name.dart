@@ -34,13 +34,16 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colourpalette.hellbeigeGrau,
-        appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              const Divider(
+                color: Colors.white,
+                height: 30,
+              ),
               const SizedBox(
                   width: 330,
                   child: Text(

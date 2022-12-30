@@ -98,7 +98,7 @@ Widget _buildMeineTermine() {
       trailing: basicIconButton(
           Icon(Icons.import_export),
           () {
-                        navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
+            navigateSecondPage(AbstimmungEinsehenPage(organizer: meetings.organizerName, titel: meetings.title, place: meetings.place,options: meetings.options,));
           } // hier muss dann das entsprechende fenster geöffnet werden
           ,
           Color.fromARGB(255, 6, 6, 6)),

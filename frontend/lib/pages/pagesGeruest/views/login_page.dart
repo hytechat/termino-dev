@@ -163,6 +163,8 @@ class _LoginState extends State<Login> {
                           const SnackBar(
                             content: Text('Erfolgreicher Login!'),
                             backgroundColor: Colors.green,
+                             behavior: SnackBarBehavior.floating,
+                             elevation: 0,
                           ),
                         );
                       } else if (formKey.currentState!.validate() &&
