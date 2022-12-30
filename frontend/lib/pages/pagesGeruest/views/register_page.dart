@@ -253,7 +253,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       Navigator.pushReplacementNamed(context, '/login');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: Text('Erfolgreiche Registrierung!'),
+                            content: Text('Ihnen wird eine Mail zugesendet um die Registrierung abzuschließen!'),
+                            duration: Duration(seconds: 5),
                             backgroundColor: Colors.green,
                             ),
                       );
