@@ -39,8 +39,7 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
 
   List<OptionModel> _openoptions = [];
 
-  _TerminDetailsPage(
-      this.organizer2, this.titel2, this.place2, this.options2);
+  _TerminDetailsPage(this.organizer2, this.titel2, this.place2, this.options2);
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +48,68 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
     bool isChecked = false;
 
     return Scaffold(
-      backgroundColor: Colourpalette.hellbeigeGrau,
+        backgroundColor: Colourpalette.hellbeigeGrau,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              width: 300,
-              child: Text(
-                "Termin einsehen",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text(
+                  "Termin einsehen",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 150.0),
+                  child: IconButton(
+                    icon: const Icon(Icons.watch_later_outlined,
+                        color: Colors.red),
+                        iconSize: 48.0,
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Verspätungsmeldung'),
+                        content: const Text(
+                            'Der:Die Organisator:in des Termins wurde benachrichtigt, dass Sie zuspät kommen!'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                  ),
+                ),
+                /*
+                SizedBox(
+                  width: 300,
+                  child: Text(
+                    "Termin einsehen",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ), */
+              ],
             ),
+/*
+              IconButton(
+                icon: const Icon(Icons.watch_later_outlined, color: Colors.red),
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Termin speichern'),
+                  content: const Text('Termin konnte leider nicht heruntergeladen werden.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+            )
+              ), */
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,63 +160,60 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
                 ),
               ],
             ),
-
-
-            
-                for (var i = 0; i < options2!.length; i++) 
-                 Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                
+            for (var i = 0; i < options2!.length; i++)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.05,
+                      child: Image.network(
+                        user.image,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  ),
                   Center(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                        child: Image.network(user.image,width: 40, height: 40,),
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: Text(user.name),
+                  )),
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      child: TextFormField(
+                        decoration: const InputDecoration(labelText: 'Start'),
+                        initialValue: options2![i].startDate.toString(),
+                        enabled: false,
                       ),
+                    ),
                   ),
                   Center(
-                  child: SizedBox (
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    child: Text (
-                    user.name
-                  ),
-                  )
-                  ),
-                Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.30,
-                    child: TextFormField(
-                      decoration: const InputDecoration(labelText: 'Start'),
-                      initialValue: options2![i].startDate.toString(),
-                      enabled: false,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      child: TextFormField(
+                        decoration: const InputDecoration(labelText: 'Ende'),
+                        initialValue: options2![i].endDate.toString(),
+                        enabled: false,
+                      ),
                     ),
                   ),
-                ),
-                 Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.30,
-                    child: TextFormField(
-                      decoration: const InputDecoration(labelText: 'Ende'),
-                      initialValue: options2![i].endDate.toString(),
-                      enabled: false,
+                  Center(
+                    child: Checkbox(
+                      checkColor: Colors.lightGreen,
+                      fillColor: MaterialStateProperty.resolveWith(getColor),
+                      value: isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = !value!;
+                        });
+                      },
                     ),
                   ),
-                ),
-                Center(
-                  child: Checkbox(
-                    checkColor: Colors.lightGreen,
-                    fillColor: MaterialStateProperty.resolveWith(getColor),
-                    value: isChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = !value!;
-                      });
-                    },
-                  ),
-                ),
-                 // Text ('Start Date ${options2![i].startDate}'),
-                /*
+                  // Text ('Start Date ${options2![i].startDate}'),
+                  /*
                 Center(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.55,
@@ -176,8 +222,8 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
                         decoration: const BoxDecoration(color: Colors.grey)),
                   ),
                 )*/
-              ],
-            )
+                ],
+              )
           ],
         ));
   }
@@ -191,14 +237,17 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
     Navigator.push(context, route).then(onGoBack);
   }
 
+  void _verspaetungsmeldung() {}
+
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
-      MaterialState.hovered, 
+      MaterialState.hovered,
       MaterialState.focused
     };
     if (states.any(interactiveStates.contains)) {
       return Colors.lightGreen;
-    } return Colors.grey;
+    }
+    return Colors.grey;
   }
 }

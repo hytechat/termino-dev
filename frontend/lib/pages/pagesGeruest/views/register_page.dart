@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:termino_frontend/config/config_expo.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -70,6 +72,11 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
+  var defaultText = const TextStyle(color: Colors.black);
+  var linkText = const TextStyle(color: Colors.blue);
+
+  final Uri _url = Uri.parse('https://www.bmf.gv.at/public/datenschutz.html');
 
   @override
   Widget build(BuildContext context) {
@@ -227,8 +234,26 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               CheckboxListTile(
                 value: _checkBoxListTile,
-                title: const Text(
-                    "Ich habe die Datenschutzerklärung gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
+                title: /* RichText(
+                    text: TextSpan(children: [
+                  TextSpan(style: defaultText, text: "Ich habe die "),
+                  TextSpan(
+                      style: linkText,
+                      text: "Datenschutzerklärung",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          var url =
+                              "https://www.bmf.gv.at/public/datenschutz.html";
+                          if (await canLaunchUrl(_url)) {
+                            await launchUrl(_url);
+                          } else {
+                            throw 'Konnte nicht geladen werden $_url';
+                          }
+                        }),
+                  TextSpan(style: defaultText, text: " gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
+                ])), */
+                const Text(
+                  "Ich habe die Datenschutzerklärung gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
                 onChanged: (val) {
                   setState(() {
                     _checkBoxListTile = val;
@@ -253,11 +278,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       Navigator.pushReplacementNamed(context, '/login');
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: Text('Ihnen wird eine Mail zugesendet um die Registrierung abzuschließen!', style: TextStyle(fontSize: 15)),
-                            duration: Duration(seconds: 5),
-                            backgroundColor: Colors.green,
-                            
-                            ),
+                          content: Text(
+                              'Ihnen wird eine Mail zugesendet um die Registrierung abzuschließen!',
+                              style: TextStyle(fontSize: 15)),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.green,
+                        ),
                       );
                     } else if (formKey.currentState!.validate() &&
                         _checkBoxListTile == false) {
