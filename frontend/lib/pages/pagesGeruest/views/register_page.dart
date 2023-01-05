@@ -232,28 +232,38 @@ class _RegisterPageState extends State<RegisterPage> {
                 color: Colors.white,
                 height: 25,
               ),
+              Text('Ich habe die'),
+              TextButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Datenschutzerklärung'),
+                      content: SingleChildScrollView(child:
+                      Text('Allgemein \n \n Für das Bundesministerium für Finanzen hat ein verantwortungsbewusster Umgang mit personenbezogenen Daten hohe Priorität. Wir möchten, dass Sie wissen, wann wir welche Daten erheben und wie wir sie verwenden. \n \n Wir haben technische und organisatorische Maßnahmen getroffen, die sicherstellen, dass die Vorschriften über den Datenschutz sowohl von uns als auch von unseren externen Dienstleistern beachtet werden. \n \n Im Zuge der Weiterentwicklung unserer Webseiten und der Implementierung neuer Technologien können Änderungen dieser Datenschutzerklärung erforderlich werden. Daher empfehlen wir Ihnen, sich diese Datenschutzerklärung ab und zu erneut durchzulesen. \n \n Rechtsgrundlagen \n \n Die Anwendung TERMINO, die vom Bundesministerium für Finanzen bereitgestellt wird, speichert und verarbeitet Daten im Sinne des österreichischen Bundesgesetzes zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten (Datenschutzgesetz - DSG) idgF. Die Speicherung und Verarbeitung der Daten erfolgt ausschließlich in Österreich. \n \n Seit 25. Mai 2018 unterliegen die Daten den Bestimmungen der Verordnung (EU) 2016/679 des Europäischen Parlaments und des Rates vom 27. April 2016 zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten, zum freien Datenverkehr und zur Aufhebung der Richtlinie 95/46/EG (Datenschutz-Grundverordnung - DSGVO) sowie dem durch das Datenschutz-Anpassungsgesetz 2018 novellierten Datenschutzgesetz. Die Verarbeitung der Daten zu den unten angeführten Zwecken stützt sich auf Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. \n \n Ihre Rechte \n \n Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche in anderer Weise verletzt worden sein könnten, haben Sie die Möglichkeit, sich bei der Aufsichtsbehörde zu beschweren. In Österreich ist das die Datenschutzbehörde (Barichgasse 40-42, 1030 Wien, Telefon: +43 1 52 152-0, E-Mail: dsb@dsb.gv.at). \n \n Personenbezogene Daten, die Sie uns bekanntgeben \n \nDaten, die Sie uns bekannt geben, werden von unseren fachverantwortlichen Mitarbeiterinnen und Mitarbeitern und unseren beauftragten IT-Dienstleistern verantwortungsvoll behandelt und nur im Sinne und zum Zweck der Anwendung genutzt. \n \n Verarbeitung von Daten \n \n Ihre personenbezogenen Daten werden für folgende Zwecke verarbeitet: \n \n Die Erstellung einer Terminabfrage erfordert die Angabe einer E-Mail Adresse zur Zusendung des Links zur Terminabstimmung. Eine darüber hinausgehende Identifikation kann durch eine Registrierung oder durch den Portalverbund erfolgen, womit auch früher gespeicherte Terminabstimmungen abrufbar sind. Für jene Personen, die an einer Terminabstimmung teilnehmen, ist die Angabe einer E-Mail Adresse optional. Sie wird empfohlen, falls die Zusendung des fixierten Termins erwünscht ist. \n \n Abgestimmte Termine werden drei Monate nach dem fixierten Datum gelöscht, nicht abgeschlossene Terminabstimmungen ein halbes Jahr nach ihrer letzten Bearbeitung. \n \n Bei Buchungslisten wird nach einem Jahr der letzten Bearbeitung ein Löschhinweis an den/die Ersteller:in per E-Mail gesendet. Darin enthalten ist ein Hinweis, dass nach weiteren 30 Tagen die Buchungsliste gelöscht wird, außer es erfolgt eine Anmeldung und die Buchungsliste wird neu abgespeichert. \n \n Jeder Eintrag bei der Erstellung eines Termins oder der Zu- oder Absage wird protokolliert, allerdings nur die Aktivität mit Zeitstempel ohne der IP-Adresse. Missbräuchliche Nutzung kann eine technische Zugangssperre nach sich ziehen. \n \n Jede:r Benutzer:in kann das eigene Konto selbst löschen. Siehe dazu folgenden FAQ-Eintrag. \n \n Cookies \n \n Cookies sind kleine Textdateien, die lokal im Zwischenspeicher des Internet-Browsers auf Ihrem Computer gespeichert werden, wenn Sie die Webseite besuchen. Die Cookies ermöglichen die Wiedererkennung des Internet-Browsers. \n \n Sie können den Einsatz und den Umfang von Cookies durch Ihre Computereinstellung selbst bestimmen. Sie können Ihren Computer so einstellen, dass Sie jedes Mal gewarnt werden, wenn ein Cookie übertragen wird, oder alle Cookies deaktivieren. Das Löschen oder das Blockieren der Cookies kann allerdings dazu führen, dass Ihnen einzelne Funktionen dieser Website nicht mehr zur Verfügung stehen. Im Hilfe-Menü Ihres Browsers erfahren Sie, wie Sie Ihre Cookies richtig verändern oder aktualisieren. \n \n termino.gv.at setzt ein technisch notwendiges Cookie mit dem Namen „has_js“ zur Leistungsverbesserung der Webseite, das feststellt, ob JavaScript verfügbar ist oder nicht. Das Cookie wird nur bis zum jeweiligen Sitzungsende gespeichert. \n \n Außerdem wird von termino.gv.at ein technisch notwendiges Cookie mit dem Namen „SESSxxx“ (xxx steht für eine Folge von Ziffern und Buchstaben) zur Sicherung der laufenden Sitzung gesetzt, wenn Sie sich bei termino.gv.at anmelden. Das Cookie wird nur bis zum jeweiligen Sitzungsende gespeichert. \n \n Statistiken zur Nutzung der Webseite werden mit der Open Source Software Matomo erstellt, welche auf demselben Server läuft. Eine Weitergabe der Daten an Dritte erfolgt nicht.  Matomo setzt dazu keine Cookies ein, IP-Adressen werden anonymisiert. Die Statistiken werden zum Zweck der Analyse des Surfverhaltens auf der Webseite verwendet. Dadurch kann die Nutzerfreundlichkeit der Webseite optimiert werden. Die Rechtmäßigkeit der Verarbeitung gemäß Art. 6 Abs. 1 lit. f DSGVO ergibt sich aus dem Umstand, dass die Verarbeitung zur Wahrung der berechtigten Interessen des Verantwortlichen erforderlich ist, um die Nutzererfahrung zu verbessern. Außerdem erfolgt eine Anonymisierung der IP-Adresse durch die Maskierung von Teilen der IP-Adresse. \n \n Eine Anfrage über das Feedbackformular wird zum Zwecke der Anfragebeantwortung an den Diensterbringer und gegebenenfalls an einen Dienstleister, welcher diesen unterstützt, als E-Mail gesendet und wird nicht auf dem TERMINO Server gespeichert. \n \n Weitergabe personenbezogener Daten an Dritte \n \n Daten, die beim Zugriff auf TERMINO protokolliert wurden, werden an Dritte nur übermittelt, soweit wir gesetzlich oder durch Gerichtsentscheidung dazu verpflichtet sind oder dies im Falle von Angriffen auf die Internetinfrastruktur zur Rechts- oder Strafverfolgung erforderlich ist. \n \n Eine Weitergabe von Daten an Dritte zu kommerziellen oder nichtkommerziellen Zwecken findet darüber hinaus ohne Ihre ausdrückliche Einwilligung nicht statt. \n \n Minderjährigenschutz \n \n Personen unter 14 Jahren sollten ohne Zustimmung der Eltern oder Erziehungsberechtigten keine personenbezogenen Daten an uns übermitteln. Wissentlich sammeln wir solche Daten nicht und geben sie auch nicht an Dritte weiter. \n \n Kontakt \n \n E-Mail: service@termino.gv.at'),
+                      ),
+                      actions: [
+                        TextButton(
+                          child: Text('Ok'),
+                          onPressed: () => Navigator.pop(context),
+                        )
+
+                      ],
+                    ),
+                  );
+                },
+                style: TextButton.styleFrom(
+                    foregroundColor: Color.fromRGBO(46, 88, 235, 1)),
+                child: const Text(
+                  'Datenschutzerklärung',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              ),
               CheckboxListTile(
                 value: _checkBoxListTile,
-                title: /* RichText(
-                    text: TextSpan(children: [
-                  TextSpan(style: defaultText, text: "Ich habe die "),
-                  TextSpan(
-                      style: linkText,
-                      text: "Datenschutzerklärung",
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url =
-                              "https://www.bmf.gv.at/public/datenschutz.html";
-                          if (await canLaunchUrl(_url)) {
-                            await launchUrl(_url);
-                          } else {
-                            throw 'Konnte nicht geladen werden $_url';
-                          }
-                        }),
-                  TextSpan(style: defaultText, text: " gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
-                ])), */
-                const Text(
-                  "Ich habe die Datenschutzerklärung gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
+                title:
+                    const Text(
+                        "gelesen und bin einverstanden, dass die Daten zum Zwecke der Terminabstimmung gespeichert werden."),
                 onChanged: (val) {
                   setState(() {
                     _checkBoxListTile = val;
