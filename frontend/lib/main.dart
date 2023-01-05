@@ -56,49 +56,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   //PageController pageController = PageController(initialPage: 0);
 
-/*
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
-        },
-        children: [
-          HomePage(),
-          TerminErstellenPage(),
-          TermineEinsehenPage(),
-          ProfilEinsehenPage(),
-        ],
-      ),
-
-      
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color.fromRGBO(217, 211, 199, 1),
-        currentIndex: currentIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.house), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: "Neu"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: "Termine"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
-        ],
-        onTap: (newIndex) {
-          pageController.animateToPage(newIndex,
-              duration: const Duration(milliseconds: 500), curve: Curves.ease);
-        },
-      ),
-    ); 
-  }*/
-
   @override
   Widget build(BuildContext context) {
     List<Widget> _buildScreens() {
