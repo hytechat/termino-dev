@@ -65,51 +65,14 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
                   child: IconButton(
                     icon: const Icon(Icons.watch_later_outlined,
                         color: Colors.red),
-                        iconSize: 48.0,
-                    onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Verspätungsmeldung'),
-                        content: const Text(
-                            'Der:Die Organisator:in des Termins wurde benachrichtigt, dass Sie zuspät kommen!'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
-                    ),
-                    
+                    iconSize: 48.0,
+                    onPressed: () {
+                      showAlertDialog(context);
+                    },
                   ),
                 ),
-                /*
-                SizedBox(
-                  width: 300,
-                  child: Text(
-                    "Termin einsehen",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ), */
               ],
             ),
-/*
-              IconButton(
-                icon: const Icon(Icons.watch_later_outlined, color: Colors.red),
-                onPressed: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Termin speichern'),
-                  content: const Text('Termin konnte leider nicht heruntergeladen werden.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'OK'),
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ),
-            )
-              ), */
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -232,12 +195,63 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
     setState(() {});
   }
 
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+      child: const Text('Nein'),
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Ja"),
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            // Return new AlertDialog
+            return AlertDialog(
+              title: const Text('Versendet!'),
+              content: const Text(
+                  'Es wurde eine Mitteilung an den:die Organisator:in versendet!'),
+              actions: [
+                TextButton(
+                  child: const Text('Ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop(); //Schließt ersten AlertDialog
+                    Navigator.of(context).pop(); //Schließt zweiten AlertDialog
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Verspätungsmeldung"),
+      content: const Text(
+          "Soll der:die Organisator:in benachrichtigt werden, dass Sie zuspät kommen?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   void navigateSecondPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);
   }
-
-  void _verspaetungsmeldung() {}
 
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
