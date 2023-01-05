@@ -54,12 +54,19 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              width: 300,
-              child: Text(
-                "Abstimmung einsehen",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
+            Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                    child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.98,
+                  child: Text(
+                    "Abstimmung einsehen",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ))
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
