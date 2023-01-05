@@ -207,6 +207,7 @@ class _TerminDetailsPage extends State<TerminDetailsPage> {
       child: const Text("Ja"),
       onPressed: () {
         showDialog(
+          barrierDismissible: false,
           context: context,
           builder: (BuildContext context) {
             // Return new AlertDialog
