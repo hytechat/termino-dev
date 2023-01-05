@@ -58,10 +58,11 @@ class _AbstimmungEinsehenPage extends State<AbstimmungEinsehenPage> {
              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Divider(height: 60, color: Colourpalette.hellbeigeGrau,),
                 Center(
                     child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.98,
-                  child: Text(
+                  child: const Text(
                     "Abstimmung einsehen",
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
